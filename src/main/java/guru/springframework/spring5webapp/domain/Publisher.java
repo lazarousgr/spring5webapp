@@ -21,7 +21,7 @@ public class Publisher
     {
     }
 
-    public Publisher(Long id, String name, String address1, String city, String state, String zipcode)
+    public Publisher(String name, String address1, String city, String state, String zipcode)
     {
         this.id = id;
         this.name = name;
@@ -105,39 +105,13 @@ public class Publisher
 
         Publisher publisher = (Publisher) o;
 
-        if(id != null ? !id.equals(publisher.id) : publisher.id != null)
-        {
-            return false;
-        }
-        if(name != null ? !name.equals(publisher.name) : publisher.name != null)
-        {
-            return false;
-        }
-        if(address1 != null ? !address1.equals(publisher.address1) : publisher.address1 != null)
-        {
-            return false;
-        }
-        if(city != null ? !city.equals(publisher.city) : publisher.city != null)
-        {
-            return false;
-        }
-        if(state != null ? !state.equals(publisher.state) : publisher.state != null)
-        {
-            return false;
-        }
-        return zipcode != null ? zipcode.equals(publisher.zipcode) : publisher.zipcode == null;
+        return id != null ? id.equals(publisher.id) : publisher.id == null;
     }
 
     @Override
     public int hashCode()
     {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (address1 != null ? address1.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (state != null ? state.hashCode() : 0);
-        result = 31 * result + (zipcode != null ? zipcode.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override
