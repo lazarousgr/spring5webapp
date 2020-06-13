@@ -34,23 +34,31 @@ public class BootStrapData implements CommandLineRunner
         ddd.getAuthors().add(eric);
 
         Publisher oreilly = new Publisher("O’Reilly", "1005 Gravenstein Highway North", "Sebastopol", "CA", "95472");
+        publisherRepository.save(oreilly);
+
+        oreilly.getBooks().add(ddd);
+        ddd.setPublisher(oreilly);
+
 
         authorRepository.save(eric);
         bookRepository.save(ddd);
         publisherRepository.save(oreilly);
+        System.out.println("Number of books in Publisher storage: " + publisherRepository.count());
 
         Author rod = new Author("Rod", "Johnson");
         Book noEJB = new Book("J2EE Development with EJB", "1234432545");
         rod.getBooks().add(noEJB);
         noEJB.getAuthors().add(rod);
+        noEJB.setPublisher(oreilly);
+        oreilly.getBooks().add(noEJB);
 
         authorRepository.save(rod);
         bookRepository.save(noEJB);
+        publisherRepository.save(oreilly);
 
         
         System.out.println("Number of books: " + bookRepository.count());
-        System.out.println("Number of publishers: " + publisherRepository.count());
-        System.out.println(oreilly.toString());
+        System.out.println("Number of books in Publisher storage: " + oreilly.getBooks().size());
 
     }
 }
